@@ -17,7 +17,7 @@ class ShoutStatusBarSummary extends Widget {
     super();
 
     this.statusBarSummary = document.createElement('p');
-    this.statusBarSummary.innerText = 'No Shouts';
+    this.statusBarSummary.innerText = 'Last Shout: (None)';
     this.node.appendChild(this.statusBarSummary);
   }
 
@@ -50,7 +50,7 @@ class ShoutWidget extends Widget {
     if (statusBar) {
       console.log('SHOUT: Found jup status bar')
       this.statusBarWidget = new ShoutStatusBarSummary();
-      statusBar.registerStatusItem('shoutStatusBarSummary', this.statusBarWidget);
+      statusBar.registerStatusItem('shoutStatusBarSummary', {item: this.statusBarWidget});
     }
   }
 
@@ -60,7 +60,7 @@ class ShoutWidget extends Widget {
     window.alert(message);
 
     if (this.statusBarWidget) {
-      this.statusBarWidget.setSummary(message);
+      this.statusBarWidget.setSummary('Last Shout: ' + this.lastShoutTime.toString());
     }
   }
 }

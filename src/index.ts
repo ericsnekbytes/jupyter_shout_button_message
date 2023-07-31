@@ -17,6 +17,7 @@ class ShoutStatusBarSummary extends Widget {
     super();
 
     this.statusBarSummary = document.createElement('p');
+    this.statusBarSummary.classList.add('jp-shout-summary');
     this.statusBarSummary.innerText = 'Last Shout: (None)';
     this.node.appendChild(this.statusBarSummary);
   }
